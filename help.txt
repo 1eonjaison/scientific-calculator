@@ -1,0 +1,90 @@
+CALCULATE
+
+Supported Operators:
++   Addition
+-   Subtraction
+*   Multiplication
+/   Division
+^   Power
+( ) Brackets
+
+Scientific Functions:
+sqrt()   Square root
+sin()    Sine
+cos()    Cosine
+tan()    Tangent
+log()    Base-10 logarithm
+ln()     Natural logarithm
+!        Factorial
+π        Pi
+e        Euler's number
+
+Examples:
+2^3
+sqrt(25)
+5!
+sin(30)
+log(100)
+Results are rounded to 1 decimal place.
+
+Type "exit" to return to the menu.
+
+
+COMPLEX NUMBERS
+
+Use i to represent imaginary numbers.
+Examples:
+i^2
+sqrt(-9)
+2 + 3i
+(2 + 3i) * (4 - 2i)
+
+
+POLYNOMIAL SOLVER
+Solves quadratic equations in the form:
+ax^2 + bx + c = 0
+Enter the values of a, b and c.
+Example:
+x^2 - 5x + 6 = 0
+a = 1
+b = -5
+c = 6
+Result:
+x1 = 3.0
+x2 = 2.0
+
+Complex solutions are also supported.
+
+
+SIMULTANEOUS EQUATION SOLVER
+
+Solves two equations in the form:
+a1x + b1y = c1
+a2x + b2y = c2
+Enter the x coefficient, y coefficient and result for each equation.
+Possible results:
+* One solution
+* No solution
+* Infinite solutions
+
+
+GRAPH
+Plots mathematical functions containing x.
+Examples:
+x^2
+x^3 - 4*x
+sin(x)
+cos(x)
+sqrt(x)
+1/x
+
+Enter the function followed by the minimum and maximum x values.
+Example:
+y = x^2
+Minimum x value: -10
+Maximum x value: 10
+A graph window will then open.
+
+
+ANGLE MODE
+Degrees are used by default for trigonometric calculations.
