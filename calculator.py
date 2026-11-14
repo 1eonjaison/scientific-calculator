@@ -13,7 +13,7 @@ history = folder / "history"
 helpfile = folder / "help.txt"
 angle = "degrees"
 
-def connectdatabase():
+def connectdatabase(): # Connects to the database.
     try:
         return sqlite3.connect(database)
     except sqlite3.Error as error:
@@ -21,7 +21,7 @@ def connectdatabase():
         print("Database error:", error)
         return False
 
-def setupdatabase():
+def setupdatabase(): # Sets up the database.
     try:
         connection = sqlite3.connect(database)
         connection.execute("""
@@ -52,13 +52,13 @@ def setupdatabase():
         print("Database error:", error)
         return False
 
-def hashingalgorithm(password):
+def hashingalgorithm(password): # Hashes the password.
     hash_value = 0
     for char in password:
         hash_value = (hash_value * 24 + ord(char)) % 1000000008
     return str(hash_value)
 
-def accountexists():
+def accountexists(): # Checks if any accounts exist.
     connection = connectdatabase()
     if not connection:
         return False
@@ -80,7 +80,7 @@ def accountexists():
     finally:
         connection.close()
 
-def usernameexists(username):
+def usernameexists(username): # Checks if a username exists.
     connection = connectdatabase()
     if not connection:
         return False
@@ -102,7 +102,7 @@ def usernameexists(username):
     finally:
         connection.close()
 
-def createaccount():
+def createaccount(): # Creates a new account.
     print("\nCreate Account")
     username = input("Username: ").strip()
     if username == "":
@@ -168,7 +168,7 @@ def createaccount():
     finally:
         connection.close()
 
-def login():
+def login(): # Logs into an account.
     print("\nLogin")
     username = input("Username: ").strip()
     if username == "":
@@ -237,7 +237,7 @@ def login():
     finally:
         connection.close()
 
-def loginmenu():
+def loginmenu(): # Displays the login menu.
     while True:
         print("\nCalculator")
         print("1. Login")
@@ -256,7 +256,7 @@ def loginmenu():
         else:
             print("\nInvalid choice.")
 
-def gethistoryfile(historyname):
+def gethistoryfile(historyname): # Gets the history file.
     try:
         history.mkdir(exist_ok=True)
     except OSError:
@@ -270,7 +270,7 @@ def gethistoryfile(historyname):
         safename = "history"
     return history / f"{safename}.txt"
 
-def save_history(historyname, expression, result):
+def save_history(historyname, expression, result): # Saves calculation history.
     filepath = gethistoryfile(historyname)
     if filepath == "":
         return False
@@ -282,7 +282,7 @@ def save_history(historyname, expression, result):
         print("Unable to save calculation history.")
         return False
 
-def showhistory(history_name):
+def showhistory(history_name): # Displays calculation history.
     filepath = gethistoryfile(history_name)
     if filepath == "":
         return
@@ -318,7 +318,7 @@ def showhistory(history_name):
             print("\nUnable to read the history.")
             return
 
-def showhelp():
+def showhelp(): # Displays the help menu.
     if not helpfile.exists():
         print("\nThe help file could not be found.")
         input("\nPress Enter to return to the options...")
@@ -338,7 +338,7 @@ def showhelp():
     except OSError:
          print("\nError: Unable to read the help file.")
        
-def formatresult(result):
+def formatresult(result): # Formats the calculation result.
     if isinstance(result, complex):
         real = round(result.real, 1)
         imaginary = round(result.imag, 1)
@@ -368,7 +368,7 @@ def formatresult(result):
     else:
         return str(round(result, 1))
 
-def calculate(accounthistory):
+def calculate(accounthistory): # Performs mathematical calculations.
     while True:
         print("\nMode: " + angle)
         print("Type 'exit' to return to the menu.")
@@ -429,7 +429,7 @@ def calculate(accounthistory):
         except Exception:
             print("Something went wrong with the calculation.")
 
-def polynomialsolver(accounthistory):
+def polynomialsolver(accounthistory): # Solves quadratic equations.
     while True:
         print("\nPolynomial Solver")
         print("Solves quadratic equations in the form:")
@@ -486,7 +486,7 @@ def polynomialsolver(accounthistory):
         elif choice != "again":
             print("Invalid choice.")
 
-def simultaneousequations(accounthistory):
+def simultaneousequations(accounthistory): # Solves simultaneous equations.
     while True:
         print("\nSimultaneous Equation Solver")
         print("Solves two equations in the form:")
@@ -571,7 +571,7 @@ def simultaneousequations(accounthistory):
         elif choice != "again":
             print("Invalid choice.")
 
-def graph():
+def graph(): # Plots mathematical functions.
     while True:
         print("\nGraphing Calculator")
         print("Enter a function using x.")
@@ -655,7 +655,7 @@ def graph():
         except Exception:
             print("Unable to display the graph.")
 
-def calculator(account):
+def calculator(account): # Displays the calculator menu.
     global angle
     username = account[0]
     accounthistory = account[1]
@@ -700,7 +700,7 @@ def calculator(account):
         else:
             print("\nInvalid choice.")
 
-def main():
+def main(): # Starts the program.
     if setupdatabase():
         while True:
             account = loginmenu()
